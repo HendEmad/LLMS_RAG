@@ -6,6 +6,7 @@ from src.controllers import DataController, ProjectController  # will call init 
 import aiofiles
 from src.models import ResoponseSignal
 import logging
+from src.routes.schemes.data import ProcessRequest
 
 logger = logging.getLogger("uvicorn.error")
 data_router = APIRouter(
@@ -65,3 +66,9 @@ async def upload_data(project_id: str, file: UploadFile,
             "file_id": file_id
         }
     )
+
+@data_router.post("/processs/{project_id}")
+async def process_endpoint(project_id: str, process_request: ProcessRequest):
+    # got file_id
+    file_id = process_request.file_id
+     

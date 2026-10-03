@@ -14,7 +14,7 @@ class ProjectController(BaseController):
         '''
         project_dir = os.path.join(
             self.files_dir,
-            project_dir
+            project_id
         )
         # check if path exists
         if not os.path.exists(project_dir):
